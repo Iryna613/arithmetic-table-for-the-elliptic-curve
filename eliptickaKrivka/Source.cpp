@@ -75,16 +75,19 @@ int main() {
     );
     M[0][0] = make_pair(-1, -1);
 
-    for (long i = 1, j = 0; j < size(roots); i++, j++) {
-        while(roots[j] == -1) {
-            j++;
+    for (long i = 1, j = 0; j < roots.size();) {
+        while(j < (long)roots.size() && roots[j] == -1) {
+            ++j;
         }
+        if (j >= (long)roots.size()) break;
         ZZ_p x = conv<ZZ_p>(j);
         ZZ_p y = conv<ZZ_p>(roots[j]);
         if (y == 0) {
             M[0][i] = make_pair(conv<long>(x), 0);
             M[i][0] = make_pair(conv<long>(x), 0);
             M[i][i] = make_pair(-1, -1);
+            ++i;
+            ++j;
             continue;
         }
         M[0][i] = make_pair(conv<long>(x), conv<long>(y));
@@ -96,8 +99,9 @@ int main() {
         if (y != 0) {
             M[0][i + 1] = make_pair(conv<long>(x), conv<long>(-y));
             M[i + 1][0] = make_pair(conv<long>(x), conv<long>(-y));
-            i++;
         }
+        j++;
+        i += 2;
     }
 
     for (long i = 1; i < rows; i++) {

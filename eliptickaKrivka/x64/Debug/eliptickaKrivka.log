@@ -1,0 +1,5 @@
+﻿  Source.cpp
+D:\Uni\term4\ral\WinNTL-11_5_1\include\NTL\lip.h(399,40): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+  (compiling source file 'Source.cpp')
+  
+  eliptickaKrivka.vcxproj -> D:\Uni\term4\ral\eliptickaKrivka\x64\Debug\eliptickaKrivka.exe
